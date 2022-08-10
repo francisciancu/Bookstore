@@ -5,6 +5,7 @@ import com.db.bookstore.model.User;
 import com.db.bookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -52,11 +53,10 @@ public class UserController {
 
 
     }
-
     @GetMapping("/dashboard")
-    public ModelAndView getDashBoard(){
+    public ModelAndView getDashBoard(@CookieValue int userId){
         ModelAndView modelAndView=new ModelAndView("dashboard");
-        modelAndView.addObject("bookList","");
+        modelAndView.addObject("bookList");
         return modelAndView;
     }
 
